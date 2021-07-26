@@ -9,20 +9,18 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({}),
+    ConfigModule.forRoot(),
+    CoffeesModule, 
     TypeOrmModule.forRoot({
-      // if type: 'postgres is added here a weird error for user authentication shows up'
-      host: process.env.DATABASE_HOST,
-      port: +process.env.DATABASE_PORT,
-      username: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
+      host: process.env.DATABASE_HOST,// database host
+      port: +process.env.DATABASE_PORT, // database host
+      username: process.env.DATABASE_USER, // username
+      password: process.env.DATABASE_PASSWORD, // user password
       database: process.env.DATABASE_NAME,
-      autoLoadEntities: true,
-      synchronize: true,
-    }),
-    CoffeesModule,
-    CoffeeRatingModule,
-  ],
+    autoLoadEntities: true, // models will be loaded automatically 
+    synchronize: true, // your entities will be synced with the database(recommended: disable in prod)
+  }), CoffeeRatingModule, DatabaseModule,
+ ],
   controllers: [AppController],
   providers: [AppService],
 })

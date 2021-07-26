@@ -8,7 +8,7 @@ export class DatabaseModule {
       providers: [
         {
           provide: 'CONNECTION', // 👈
-          useValue: createConnection(options), 
+          useFactory: async () => await createConnection(options), 
         }
       ]
     }

@@ -6,7 +6,7 @@ services:
     ports:
       - "5432:5432"
     env_file: 
-    - docker.env
+    - docker.env 
   pgadmin:
     container_name: pgadmin4_container
     image: dpage/pgadmin4
