@@ -5,6 +5,7 @@ import { CoffeeRatingService } from './coffee-rating.service';
 
 @Module({
   imports: [
+    CoffeesModule,
     DatabaseModule.register({ // 👈 passing in dynamic values
       type: 'postgres',
       host: 'localhost',
